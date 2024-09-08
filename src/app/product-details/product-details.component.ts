@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { IProduct } from '../catalog/product.model';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-product-details',
@@ -8,6 +9,7 @@ import { IProduct } from '../catalog/product.model';
 })
 export class ProductDetailsComponent {
   @Input() product!: IProduct;
+  @Output() buy = new EventEmitter();
 
   constructor() {
     this.product;
@@ -19,5 +21,9 @@ export class ProductDetailsComponent {
 
   getDiscountedPriceClasses = (product: IProduct): string[] => {
     return product.discount > 0 ? ["discounted"] : [];
+  }
+
+  triggerAdd = (product: IProduct): void => {
+    this.buy.emit();
   }
 }
