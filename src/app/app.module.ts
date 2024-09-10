@@ -8,12 +8,14 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { SideHeaderComponent } from './side-header/side-header.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CatalogComponent,
+    CartComponent,
     SideHeaderComponent,
     ProductDetailsComponent,
   ],
