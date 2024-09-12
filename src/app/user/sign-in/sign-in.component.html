@@ -1,0 +1,33 @@
+<div class="container">
+  <form class="form" #form="ngForm" (ngSubmit)="signIn()">
+    <img class="logo" src="/images/logo.png" />
+    <div class="sign-in">Sign In</div>
+    <div class="sub-text">to acquire awesome bots</div>
+    <input
+      #email="ngModel"
+      required
+      email
+      name="email"
+      placeholder="Email Address"
+      type="text"
+      [(ngModel)] = "credentials.email"
+    />
+    <em class="error" *ngIf="email.errors?.['required'] && email.touched">Email is required</em>
+    <em class="error" *ngIf="email.errors?.['email'] && email.touched">Invalid email format</em>
+    <input
+      #password="ngModel"
+      required
+      name="password"
+      placeholder="Password"
+      type="password"
+      [(ngModel)] = "credentials.password"
+    />
+    <em class="error" *ngIf="password.invalid && password.touched">Password is required</em>
+    <div class="buttons" >
+      <button [disabled]="form.invalid" type="submit" class="button cta">
+        Sign In
+      </button>
+    </div>
+    <div class="signInError" *ngIf="signInError">Sign-In Failed: Invalid Credentials</div>
+  </form>
+</div>
